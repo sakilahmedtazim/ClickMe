@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Verify</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: rgba(62, 2, 2, 0.8) url('https://www.nicepng.com/png/detail/406-4060076_super-mario-bros-background.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.701);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #2a2a29, #a53c3c, #ff3300);
+            color: white;
+            transition: transform 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #e60000;
+            display: none;
+            animation: messageBounce 1s infinite alternate;
+        }
+
+        #loading {
+            display: none;
+            margin-top: 9px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid transparent;
+            border-top: 5px solid #ff0000;
+            border-right: 5px solid #ffcc00;
+            border-bottom: 5px solid #00cc00;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes messageBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <button id="verifyButton">Click to Verify You Are Human</button>
+        <div id="loading">
+            <div class="spinner"></div>
+        </div>
+        <p id="message">Fuck You time waster!</p>
+    </div>
+
+    <div class="footer">
+        <p>Created by <b>Danish Sheikh</b> <img src="C:\Users\4hmed\Downloads\Jolly.jpg" alt="Logo"></p>
+        <p><i>Fear The Bones</i></p>
+    </div>
+
+    <audio id="clickSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+    <audio id="marioTune" src="https://www.myinstants.com/media/sounds/smb_stage_clear.mp3"></audio>
+
+    <script>
+        const button = document.getElementById('verifyButton');
+        const loading = document.getElementById('loading');
+        const message = document.getElementById('message');
+        const clickSound = document.getElementById('clickSound');
+        const marioTune = document.getElementById('marioTune');
+
+        button.addEventListener('click', () => {
+            clickSound.play();
+            button.style.display = 'none';
+            loading.style.display = 'block';
+
+            setTimeout(() => {
+                loading.style.display = 'none';
+                message.style.display = 'block';
+                marioTune.play();
+            }, 3000); // Simulates a 5-second loading time
+        });
+    </script>
+</body>
+</html>
